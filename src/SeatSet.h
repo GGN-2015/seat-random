@@ -98,8 +98,8 @@ public:
     }
 
     void debugOutput() const {
-        int row = m_int_matrix.size();
-        int col = m_int_matrix[0].size();
+        int row = this -> getRowCnt();
+        int col = this -> getColCnt();
 
         // output the seat set
         m_my_log -> log("SeatSet: debugOutput, total seat_cnt = " + std::to_string(m_seat_cnt));
@@ -110,5 +110,19 @@ public:
 
     int getSeatCnt() const {
         return m_seat_cnt; // return the number of seat
+    }
+    int getRowCnt() const {
+        return m_int_matrix.size();
+    }
+    int getColCnt() const {
+        assert(getRowCnt() > 0);
+        return m_int_matrix[0].size();
+    }
+
+    int getFlagByIndex(int i, int j) const {
+        assert(0 <= i && i < getRowCnt());
+        assert(0 <= j && j < getColCnt());
+
+        return m_int_matrix[i][j]; // return FLAG_SEAT or FLAG_EMPTY
     }
 };
