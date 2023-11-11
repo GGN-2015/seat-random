@@ -13,6 +13,6 @@ int main() {
     NameList   name_list   (&my_log); // read file when constructed
     RandomMap  random_map  (&my_log, &name_list, &seat_set);
     
-    random_map.outputToFile("tmp.txt");
+    random_map.outputToRandomFile();
     return 0;
 }

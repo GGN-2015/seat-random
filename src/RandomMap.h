@@ -18,7 +18,7 @@ private:
     std::string getRandomFileName() const {
         std::string filename = "";
         for(int i = 0; i < RANDOM_FILENAME_LENGTH; i += 1) {
-            filename += (char)('0' + m_rand_list.getRandomInt(0, 9));
+            filename += (char)('0' + m_random_list.getRandomInt(0, 9));
         }
         filename += ".txt";
         return filename;
@@ -66,7 +66,7 @@ public:
     }
 
     void outputToRandomFile() {
-        std::string filename = getRandomFilename();
+        std::string filename = getRandomFileName();
         std::string filepath = "..\\history\\" + filename;
 
         outputToFile(filepath);
