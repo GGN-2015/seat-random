@@ -1,14 +1,3 @@
-<<<<<<< HEAD
-#include <cstdio>
-#include "MyLog.h"
-
-int main() {
-    MyLog my_log;
-
-    my_log.log("seat-random: start");
-    return 0;
-}
-=======
 #include <cstdlib>
 
 #include "MyLog.h"
@@ -27,4 +16,3 @@ int main() {
     random_map.outputToRandomFile();
     return 0;
 }
->>>>>>> e8628d851664def5724913356abc4eb6460bceee
