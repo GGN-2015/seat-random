@@ -67,7 +67,12 @@ public:
 
     void outputToRandomFile() {
         std::string filename = getRandomFileName();
-        std::string filepath = "..\\history\\" + filename;
+
+        #ifdef _WIN32
+            std::string filepath = "..\\history\\" + filename; // windows flavor
+        #else
+            std::string filepath = "../history/" + filename; // linux flavor
+        #endif
 
         outputToFile(filepath);
         printf("%s\n", filename.c_str()); // output filename to stdout

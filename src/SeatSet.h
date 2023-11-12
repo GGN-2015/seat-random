@@ -6,7 +6,12 @@
 #include <cstring>
 #include <vector>
 
-#define SEAT_SET_FILE  "..\\config\\seat_set.txt"
+#ifdef _WIN32
+    #define SEAT_SET_FILE  "..\\config\\seat_set.txt"
+#else
+    #define SEAT_SET_FILE  "../config/seat_set.txt"
+#endif
+
 #define MAX_LINE_WIDTH (32)
 #define FLAG_SEAT      (1) // to show someplace is a seat
 #define FLAG_EMPTY     (0) // to show someplace is an empty position

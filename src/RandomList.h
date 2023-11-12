@@ -18,7 +18,12 @@ public:
     int getRandomInt(int L, int R) const {
         assert(R >= L);
 
-        int rnd = (rand() << 15) | rand();
+        #ifdef _WIN32
+            int rnd = (rand() << 15) | rand();
+        #else
+            int rnd = rand(); // linux flavor random integer
+        #endif
+
         return rnd % (R - L + 1) + L;
     }
 

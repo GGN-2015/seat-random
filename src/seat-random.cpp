@@ -6,7 +6,9 @@
 #include "SeatSet.h"
 
 int main() {
-    system("chcp 65001 > nul"); // change to active code page: unicode
+    #ifdef _WIN32
+        system("chcp 65001 > nul"); // change to active code page: unicode
+    #endif
 
     MyLog      my_log;
     SeatSet    seat_set    (&my_log); // read file when constructed

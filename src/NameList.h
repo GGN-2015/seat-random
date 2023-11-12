@@ -6,7 +6,12 @@
 #include <vector>
 #include "MyLog.h"
 
-#define NAME_LIST_FILE "..\\config\\name_list.txt"
+#ifdef _WIN32
+    #define NAME_LIST_FILE "..\\config\\name_list.txt"
+#else
+    #define NAME_LIST_FILE "../config/name_list.txt"
+#endif
+
 #define MAX_NAME_LENGTH (32)
 
 typedef std::vector<std::string> StringList;
