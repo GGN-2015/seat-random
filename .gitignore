@@ -164,3 +164,4 @@ config/*.txt
 history/*.txt
 *.pyc
 *.xlsx
+pyenv/*
