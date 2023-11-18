@@ -1,6 +1,6 @@
 CPP=g++
 OBJ=seat-random.exe
-OPT=
+OPT=-std=c++11
 
 all: $(OBJ)
 

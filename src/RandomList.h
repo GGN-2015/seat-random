@@ -1,6 +1,8 @@
 #pragma once
 
 #include <algorithm>
+#include <cassert>
+#include <chrono>
 #include <cstdlib>
 #include <ctime>
 #include <vector>
@@ -28,7 +30,9 @@ public:
     }
 
     RandomList(MyLog* log): m_my_log(log) {
-        srand(time(NULL));
+        auto now = std::chrono::system_clock::now();
+        auto ms = std::chrono::duration_cast<std::chrono::milliseconds>(now.time_since_epoch()).count();
+        srand(ms);
     }
 
     int getValueByIndex(int index) const {

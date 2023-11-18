@@ -5,9 +5,12 @@
 #include "RandomMap.h"
 #include "SeatSet.h"
 
+#define SUB_PROCESS (1)
 int main() {
     #ifdef _WIN32
-        system("chcp 65001 > nul"); // change to active code page: unicode
+        #if (!SUB_PROCESS) // do not change chcp in subprocess mod
+            system("chcp 65001 > nul"); // change to active code page: unicode
+        #endif
     #endif
 
     MyLog      my_log;
