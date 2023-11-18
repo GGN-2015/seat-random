@@ -39,20 +39,7 @@ class ExcelUtils:
 
         # 创建正向座位表
         worksheet.title = "座位表"
-        worksheet.cell(row=1, column=1, value="学生视角")
-        worksheet.cell(row=2, column=(col_cnt + 1) // 2, value="讲")
-        worksheet.cell(row=2, column=(col_cnt + 1) // 2 + 1, value="台")
-        for i in range(row_cnt):
-            worksheet.cell(row=4+i, column=1, value="第 %d 行" % (i+1))
-        for j in range(col_cnt):
-            worksheet.cell(row=3, column=2+j, value="第 %d 列" % ((col_cnt+1)-(j+1)))
-        for i in range(row_cnt):
-            for j in range(col_cnt):
-                worksheet.cell(row=4+i, column=2+j, value=arr[i][j])
-
-        # 创建镜像座位表
-        basic_row_cnt = row_cnt + 5
-        worksheet.cell(row=basic_row_cnt, column=1, value="教师视角")
+        basic_row_cnt = 0
         for i in range(row_cnt):
             worksheet.cell(row=basic_row_cnt+2+i, column=1, value="第 %d 行" % (row_cnt - i))
         for j in range(col_cnt):

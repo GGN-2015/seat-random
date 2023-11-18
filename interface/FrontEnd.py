@@ -1,5 +1,7 @@
 import subprocess
 import tkinter as tk
+from tkinter import messagebox
+import os
 
 from SystemUtils import SystemUtils
 from ExcelUtils  import ExcelUtils
@@ -26,10 +28,17 @@ class FrontEnd:
             cwd=self.system_utils.get_src_path() # 指定工作路径
         )
         filename = result.stdout.strip()
-        xlsxname = self.excel_utils.make_xlsx_file(filename) # 生成 excel 文件
-        self.system_utils.edit_xlsx_file(
-            self.system_utils.get_xlsx_file_path(xlsxname)
-        ) # 打开 excel 文件
+
+        if filename == "":
+            messagebox.showwarning("警告", "座位的数量必须与学生的总数一致!")
+        else:
+            xlsxname = self.excel_utils.make_xlsx_file(filename) # 生成 excel 文件
+            self.system_utils.edit_xlsx_file(
+                self.system_utils.get_xlsx_file_path(xlsxname)
+            ) # 打开 excel 文件
+
+    def __open_xlsx_folder(self): # 打开历史记录文件夹
+        os.startfile(self.system_utils.get_xlsx_file_path(""))
 
     def __init__(self, system_utils: SystemUtils, excel_utils: ExcelUtils):
         self.__do_nothing() # 什么都没用
@@ -53,6 +62,9 @@ class FrontEnd:
 
         self.button3 = tk.Button(self.frame, text="生成新座位表", command=self.__create_new_arrangement, padx=self.padx, pady=self.pady)
         self.button3.grid(row=0, column=2)
+
+        self.button4 = tk.Button(self.frame, text="查看历史记录", command=self.__open_xlsx_folder, padx=self.padx, pady=self.pady)
+        self.button4.grid(row=0, column=3)
 
     def run(self):
         self.window.mainloop()
