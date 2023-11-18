@@ -27,7 +27,9 @@ class FrontEnd:
         )
         filename = result.stdout.strip()
         xlsxname = self.excel_utils.make_xlsx_file(filename) # 生成 excel 文件
-        self.system_utils.edit_xlsx_file(xlsxname) # 打开 excel 文件
+        self.system_utils.edit_xlsx_file(
+            self.system_utils.get_xlsx_file_path(xlsxname)
+        ) # 打开 excel 文件
 
     def __init__(self, system_utils: SystemUtils, excel_utils: ExcelUtils):
         self.__do_nothing() # 什么都没用
@@ -38,7 +40,7 @@ class FrontEnd:
 
         self.window = tk.Tk()
         self.window.resizable(False, False) # 禁止窗口大小调节
-        self.window.title("seat-random v0.1 beta")
+        self.window.title("随机排座 v0.1 beta")
 
         self.frame = tk.Frame(self.window, padx=10, pady=10)
         self.frame.pack()
@@ -56,5 +58,7 @@ class FrontEnd:
         self.window.mainloop()
 
 if __name__ == "__main__":
-    front_end = FrontEnd(SystemUtils(), ExcelUtils())
+    system_utils = SystemUtils()
+    excel_utils  = ExcelUtils (system_utils)
+    front_end    = FrontEnd   (system_utils, excel_utils)
     front_end.run()

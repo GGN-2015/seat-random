@@ -15,6 +15,14 @@ class SystemUtils:
         dir_now  = os.path.dirname(os.path.abspath(__file__))
         root_dir = os.path.dirname(dir_now)
         return root_dir
+    
+    def get_history_file_path(self, raw_filename) -> str: # 获取原始历史记录
+        root_dir = self.get_root_dir()
+        return os.path.join(root_dir, "history", raw_filename)
+    
+    def get_xlsx_file_path(self, excel_file_name) -> str: # 获取 excel 文件路径
+        root_dir = self.get_root_dir()
+        return os.path.join(root_dir, "xlsx", excel_file_name)
 
     def get_src_path(self) -> str:
         root_dir = self.get_root_dir()
