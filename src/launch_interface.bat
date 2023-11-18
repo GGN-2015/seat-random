@@ -1,3 +1,3 @@
 @echo off
 cd %~dp0
-start python.exe ..\interface\FrontEnd.py
+start ..\pyenv\python.exe ..\interface\FrontEnd.py
